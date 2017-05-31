@@ -4,17 +4,17 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
-import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
+import {DynamicFormModule} from './dynamic-form/dynamic-form.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    DynamicFormComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    DynamicFormModule
   ],
   providers: [],
   bootstrap: [AppComponent]

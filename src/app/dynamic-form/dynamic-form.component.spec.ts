@@ -4,6 +4,7 @@ import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
 
 import {DynamicFormComponent} from './dynamic-form.component';
+import {DynamicFormInputComponent} from './dynamic-form-input/dynamic-form-input.component';
 
 describe('DynamicFormComponent', () => {
   let component: DynamicFormComponent;
@@ -11,7 +12,7 @@ describe('DynamicFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [DynamicFormComponent]
+      declarations: [DynamicFormComponent, DynamicFormInputComponent]
     })
       .compileComponents();
   }));
