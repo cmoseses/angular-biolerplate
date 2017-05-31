@@ -1,0 +1,36 @@
+#!/bin/sh
+
+printf "\n\033[0;36mRunning frontend pre-commit hook.\033[0m\n"
+
+cwd=$(pwd)
+
+tsFiles=$(git diff --cached --name-only --diff-filter=ACM | grep "\.ts$")
+
+if [ "$tsFiles" = "" ]; then
+    echo "no TS files found in your commit"
+    exit 0
+else
+    pass=true
+
+    cd $(echo "$cwd")
+
+    for tsFile in ${tsFiles}; do
+
+        tsFileDir=$( dirname ${tsFile} )
+
+        result=$($(npm bin)/tslint --type-check --project "./src/tsconfig.json" "./$tsFile")
+        if [ $? -ne 0 ]; then
+            echo "$result"
+            pass=false
+        fi
+    done
+
+    if ! $pass; then
+        printf "\n\033[0;31mSorry dude :/ you must fix TsLint issues listed above!\033[0m\n\n"
+        exit 1
+    else
+        printf "\n\033[0;32mLooks good :)\033[0m\n\n"
+        exit 0
+    fi
+
+fi
