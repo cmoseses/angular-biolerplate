@@ -6,6 +6,7 @@ import {HttpModule} from '@angular/http';
 import {AppComponent} from './app.component';
 import {DynamicFormModule} from './dynamic-form/dynamic-form.module';
 import {DynamicFormQuestionModule} from './dynamic-form/dynamic-form-question/dynamic-form-question.module';
+import {LoginModule} from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {DynamicFormQuestionModule} from './dynamic-form/dynamic-form-question/dy
     HttpModule,
     DynamicFormModule,
     DynamicFormQuestionModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
