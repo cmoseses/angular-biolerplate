@@ -1,9 +1,8 @@
-/* tslint:disable:no-unused-variable */
-
 import {TestBed, async} from '@angular/core/testing';
 import {AppComponent} from './app.component';
 import {DynamicFormComponent} from './dynamic-form/dynamic-form.component';
 import {DynamicFormQuestionComponent} from './dynamic-form/dynamic-form-question/dynamic-form-question.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 describe('AppComponent', () => {
   beforeEach(() => {
@@ -13,6 +12,7 @@ describe('AppComponent', () => {
         DynamicFormComponent,
         DynamicFormQuestionComponent
       ],
+      imports: [ReactiveFormsModule]
     });
     TestBed.compileComponents();
   });
@@ -20,7 +20,7 @@ describe('AppComponent', () => {
   it('should create the app', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    expect(app).toBeDefined();
   }));
 
   it(`should have as title 'app works!'`, async(() => {

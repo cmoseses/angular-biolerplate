@@ -1,4 +1,13 @@
-<p>
-  dynamic-form works!
-  <app-dynamic-form-question></app-dynamic-form-question>
-</p>
+<form (ngSubmit)="submit.next($event)" [formGroup]="form" novalidate>
+  <div class="form-question-container">
+    <div *ngFor="let question of questions">
+      <app-dynamic-form-question [question]="question" [form]="form"></app-dynamic-form-question>
+    </div>
+  </div>
+  <button type="submit"
+          [disabled]="!form.valid"
+          class="ui inverted white button mini caps"
+  >
+    Save
+  </button>
+</form>
