@@ -3,7 +3,7 @@
 import {TestBed, async} from '@angular/core/testing';
 import {AppComponent} from './app.component';
 import {DynamicFormComponent} from './dynamic-form/dynamic-form.component';
-import {DynamicFormInputComponent} from './dynamic-form/dynamic-form-input/dynamic-form-input.component';
+import {DynamicFormQuestionComponent} from './dynamic-form/dynamic-form-question/dynamic-form-question.component';
 
 describe('AppComponent', () => {
   beforeEach(() => {
@@ -11,7 +11,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         DynamicFormComponent,
-        DynamicFormInputComponent
+        DynamicFormQuestionComponent
       ],
     });
     TestBed.compileComponents();

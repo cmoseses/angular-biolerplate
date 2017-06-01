@@ -3,22 +3,21 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
 
-import {DynamicFormComponent} from './dynamic-form.component';
-import {DynamicFormQuestionComponent} from './dynamic-form-question/dynamic-form-question.component';
+import {DynamicFormQuestionComponent} from './dynamic-form-question.component';
 
-describe('DynamicFormComponent', () => {
-  let component: DynamicFormComponent;
-  let fixture: ComponentFixture<DynamicFormComponent>;
+describe('DynamicFormQuestionComponent', () => {
+  let component: DynamicFormQuestionComponent;
+  let fixture: ComponentFixture<DynamicFormQuestionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [DynamicFormComponent, DynamicFormQuestionComponent]
+      declarations: [DynamicFormQuestionComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DynamicFormComponent);
+    fixture = TestBed.createComponent(DynamicFormQuestionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

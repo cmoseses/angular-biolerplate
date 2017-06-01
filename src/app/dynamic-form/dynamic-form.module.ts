@@ -3,10 +3,10 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {DynamicFormComponent} from './dynamic-form.component';
-import {DynamicFormInputModule} from './dynamic-form-input/dynamic-form-input.module';
+import {DynamicFormQuestionModule} from './dynamic-form-question/dynamic-form-question.module';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, DynamicFormInputModule],
+  imports: [CommonModule, ReactiveFormsModule, DynamicFormQuestionModule],
   declarations: [DynamicFormComponent],
   exports: [DynamicFormComponent]
 })
