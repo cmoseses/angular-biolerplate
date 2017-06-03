@@ -1,21 +1,28 @@
 import {TestBed, async} from '@angular/core/testing';
 import {AppComponent} from './app.component';
-import {DynamicFormComponent} from './dynamic-form/dynamic-form.component';
-import {DynamicFormQuestionComponent} from './dynamic-form/dynamic-form-question/dynamic-form-question.component';
-import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {LoginModule} from './login/login.module';
 import {RouterTestingModule} from '@angular/router/testing';
+import {DynamicFormModule} from './dynamic-form/dynamic-form.module';
+import {HomeModule} from './home/home.module';
+import {APP_BASE_HREF} from '@angular/common';
 
 describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent,
-        DynamicFormComponent,
-        DynamicFormQuestionComponent
+        AppComponent
       ],
-      imports: [ReactiveFormsModule, AppRoutingModule, LoginModule, RouterTestingModule]
+      imports: [
+        RouterTestingModule,
+        LoginModule,
+        HomeModule,
+        DynamicFormModule,
+        AppRoutingModule
+      ],
+      providers: [
+        {provide: APP_BASE_HREF, useValue: '/'}
+      ]
     });
     TestBed.compileComponents();
   });
