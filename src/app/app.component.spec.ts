@@ -3,6 +3,9 @@ import {AppComponent} from './app.component';
 import {DynamicFormComponent} from './dynamic-form/dynamic-form.component';
 import {DynamicFormQuestionComponent} from './dynamic-form/dynamic-form-question/dynamic-form-question.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {AppRoutingModule} from './app-routing.module';
+import {LoginModule} from './login/login.module';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('AppComponent', () => {
   beforeEach(() => {
@@ -12,7 +15,7 @@ describe('AppComponent', () => {
         DynamicFormComponent,
         DynamicFormQuestionComponent
       ],
-      imports: [ReactiveFormsModule]
+      imports: [ReactiveFormsModule, AppRoutingModule, LoginModule, RouterTestingModule]
     });
     TestBed.compileComponents();
   });

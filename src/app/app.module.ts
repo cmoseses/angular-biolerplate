@@ -8,10 +8,11 @@ import {DynamicFormModule} from './dynamic-form/dynamic-form.module';
 import {DynamicFormQuestionModule} from './dynamic-form/dynamic-form-question/dynamic-form-question.module';
 import {AppRoutingModule} from './app-routing.module';
 import {LoginModule} from './login/login.module';
+import {HomeModule} from './home/home.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,6 +22,7 @@ import {LoginModule} from './login/login.module';
     DynamicFormQuestionModule,
     ReactiveFormsModule,
     LoginModule,
+    HomeModule,
     AppRoutingModule
   ],
   providers: [],
