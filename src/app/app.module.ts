@@ -5,17 +5,17 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {LoginModule} from './login/login.module';
 import {HomeModule} from './home/home.module';
-import { NotFoundComponent } from './not-found/not-found.component';
+import {NotFoundModule} from './not-found/not-found.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NotFoundComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     LoginModule,
     HomeModule,
+    NotFoundModule,
     AppRoutingModule
   ],
   providers: [],

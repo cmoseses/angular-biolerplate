@@ -6,6 +6,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {DynamicFormModule} from './dynamic-form/dynamic-form.module';
 import {HomeModule} from './home/home.module';
 import {APP_BASE_HREF} from '@angular/common';
+import {NotFoundModule} from './not-found/not-found.module';
 
 describe('AppComponent', () => {
   beforeEach(() => {
@@ -16,6 +17,7 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule,
         LoginModule,
+        NotFoundModule,
         HomeModule,
         DynamicFormModule,
         AppRoutingModule
