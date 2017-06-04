@@ -8,6 +8,7 @@ import {HomeModule} from './home/home.module';
 import {APP_BASE_HREF} from '@angular/common';
 import {NotFoundModule} from './not-found/not-found.module';
 import {DashboardsModule} from './dashboards/dashboards.module';
+import {HomeContentModule} from './home-content/home-content.module';
 
 describe('AppComponent', () => {
   beforeEach(() => {
@@ -19,6 +20,7 @@ describe('AppComponent', () => {
         RouterTestingModule,
         LoginModule,
         NotFoundModule,
+        HomeContentModule,
         HomeModule,
         DynamicFormModule,
         DashboardsModule,
