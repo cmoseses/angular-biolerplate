@@ -1,5 +1,13 @@
 # Homework
 
+## Setup steps
+- install *NodeJs* `v6.10.3`
+- `cd` to the root of this project
+- `npm install`
+- `ng serve` then visit `http://localhost:4200/`
+
+## Support by Angular-CLI
+
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
 
 ## Development server
