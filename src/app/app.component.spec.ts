@@ -12,6 +12,7 @@ import {DashboardsModule} from './dashboards/dashboards.module';
 import {HomeContentModule} from './home-content/home-content.module';
 import {GirdModule} from './gird/gird.module';
 import {DropdownModule} from './dropdown/dropdown.module';
+import {ChartModule} from 'angular2-highcharts';
 
 describe('AppComponent', () => {
   beforeEach(() => {
@@ -21,6 +22,7 @@ describe('AppComponent', () => {
       ],
       imports: [
         RouterTestingModule,
+        ChartModule.forRoot(require('highcharts')),
         LoginModule,
         NotFoundModule,
         GirdModule,

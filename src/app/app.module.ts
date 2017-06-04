@@ -1,6 +1,8 @@
-import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule} from '@angular/http';
+
+import {ChartModule} from 'angular2-highcharts';
 
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -19,6 +21,8 @@ import {DropdownModule} from './dropdown/dropdown.module';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    ChartModule.forRoot(require('highcharts')),
     LoginModule,
     HomeModule,
     DashboardsModule,
@@ -26,7 +30,6 @@ import {DropdownModule} from './dropdown/dropdown.module';
     DropdownModule,
     NotFoundModule,
     HomeContentModule,
-    HttpModule,
     AppRoutingModule
   ],
   providers: [AuthGuardService],
