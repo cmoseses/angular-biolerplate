@@ -1,4 +1,10 @@
 <p>
   login works!
 </p>
-<app-dynamic-form [questions]="loginQuestions" (formValue)="loginClick.next($event)"></app-dynamic-form>
+<app-dynamic-form
+  [buttonText]="'Log In'"
+  [questions]="loginQuestions"
+  (formValue)="loginClick.next($event)"
+>
+
+</app-dynamic-form>

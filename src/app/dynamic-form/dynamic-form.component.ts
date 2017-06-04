@@ -12,6 +12,7 @@ import {Question} from './dynamic-form-question/question.model';
   styleUrls: ['./dynamic-form.component.css']
 })
 export class DynamicFormComponent implements OnInit, OnDestroy {
+  @Input() buttonText = 'save';
   @Input() questions: Array<Question<any>> = [];
   @Output() formValue: EventEmitter<any> = new EventEmitter<any>();
 
