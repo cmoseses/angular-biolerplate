@@ -26,23 +26,14 @@ export class HomeContentComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.dropDownClick.do(console.log).subscribe();
-    this.dropDownValues = this.logService.getLogs()
-      .map((logs: Array<Log>) =>
-        logs.map((log: Log) => log.logItems)
-          .reduce((acc, log) => [...acc, ...log], [])
-      )
-      .map((logItems: Array<LogItem>) => logItems
-        .map(logItem => logItem.logLevel)
-        .filter((v, i, a) => a.indexOf(v) === i)
-        .map(logLevel => new DropdownValue<string>(logLevel, logLevel))
+    this.dropDownValues = this.logService.getDistinctLogLevel()
+      .map(logLevels => logLevels.map(logLevel =>
+          new DropdownValue<string>(logLevel, logLevel)
+        )
       );
 
     this.gridColumns = this.getColumns();
-    this.gridRows = this.logService.getLogs()
-      .map((logs: Array<Log>) =>
-        logs.map((log: Log) => log.logItems)
-          .reduce((acc, log) => [...acc, ...log], [])
-      );
+    this.gridRows = this.logService.getLogItems();
   }
 
   ngOnDestroy() {

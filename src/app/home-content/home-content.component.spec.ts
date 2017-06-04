@@ -11,7 +11,11 @@ import {DropdownModule} from '../dropdown/dropdown.module';
 describe('HomeContentComponent', () => {
   let component: HomeContentComponent;
   let fixture: ComponentFixture<HomeContentComponent>;
-  const LogServiceStub = {getLogs: () => Observable.of([])};
+  const LogServiceStub = {
+    getLogs: () => Observable.of([]),
+    getLogItems: () => Observable.of([]),
+    getDistinctLogLevel: () => Observable.of([])
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

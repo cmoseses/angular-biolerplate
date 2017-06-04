@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 
-import {Log, LogOption} from '../models/logs.model';
+import {Log, LogOption, LogItem} from '../models/logs.model';
 import {environment} from '../../environments/environment';
 
 @Injectable()
@@ -20,6 +20,22 @@ export class LogService {
         logOptions.map((logOption: LogOption) =>
           new Log(logOption)
         )
+      );
+  }
+
+  getLogItems(): Observable<Array<LogItem>> {
+    return this.getLogs()
+      .map((logs: Array<Log>) =>
+        logs.map((log: Log) => log.logItems)
+          .reduce((acc, log) => [...acc, ...log], [])
+      );
+  }
+
+  getDistinctLogLevel(): Observable<Array<string>> {
+    return this.getLogItems()
+      .map((logItems: Array<LogItem>) => logItems
+        .map(logItem => logItem.logLevel)
+        .filter((v, i, a) => a.indexOf(v) === i)
       );
   }
 }
