@@ -13,7 +13,7 @@ import {Subject} from 'rxjs/Subject';
 describe('DynamicFormComponent', () => {
   let component: DynamicFormComponent;
   let fixture: ComponentFixture<DynamicFormComponent>;
-  const questions: Question<any>[] = [
+  const questions: Array<Question<any>> = [
     new DropdownQuestion({
       id: 'grantType',
       label: 'Grant Type',

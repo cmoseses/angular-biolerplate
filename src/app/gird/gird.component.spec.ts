@@ -1,9 +1,8 @@
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {DebugElement} from '@angular/core';
 
-import { GirdComponent } from './gird.component';
+import {GirdComponent} from './gird.component';
 
 describe('GirdComponent', () => {
   let component: GirdComponent;
@@ -11,9 +10,9 @@ describe('GirdComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GirdComponent ]
+      declarations: [GirdComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
