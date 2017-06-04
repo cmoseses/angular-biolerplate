@@ -7,7 +7,7 @@ export interface LogItemOption {
 }
 
 export interface LogItem {
-  readonly timeStamp: string;
+  timeStamp: any;
   readonly logMarker: string;
   readonly currentThread: string;
   readonly logger: string;
