@@ -1,12 +1,13 @@
-<p>
-  login works!
-</p>
-<app-dynamic-form
-  [buttonText]="'Log In'"
-  [questions]="loginQuestions"
-  (formValue)="loginClick.next($event)"
->
-</app-dynamic-form>
-<div class="ui left red basic label" *ngIf="showErrorInfo | async">
-  Your userid or password is wrong, try 123/xxxx
+<div class="login-container">
+    <div class="ui header flex-item">Log In</div>
+    <app-dynamic-form
+      class="flex-item"
+      [buttonText]="'Log In →'"
+      [questions]="loginQuestions"
+      (formValue)="loginClick.next($event)"
+    >
+    </app-dynamic-form>
+    <span class="ui left red basic label login-error-message" *ngIf="showErrorInfo | async">
+      Your userid or password is wrong, try 123/xxxx
+    </span>
 </div>

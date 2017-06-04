@@ -1,0 +1,17 @@
+.home-content {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.dropdown {
+  min-width: 20%;
+}
+
+.gird {
+  width: 80%;
+}

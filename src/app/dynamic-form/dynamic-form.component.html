@@ -1,12 +1,11 @@
-<form (ngSubmit)="submit.next($event)" [formGroup]="form" novalidate>
-  <div class="form-question-container">
-    <div *ngFor="let question of questions">
-      <app-dynamic-form-question [question]="question" [form]="form"></app-dynamic-form-question>
-    </div>
+<form class="ui form" (ngSubmit)="submit.next($event)" [formGroup]="form" novalidate>
+  <div *ngFor="let question of questions"
+       class="questions">
+    <app-dynamic-form-question [question]="question" [form]="form"></app-dynamic-form-question>
   </div>
   <button type="submit"
           [disabled]="!form.valid"
-          class="ui primary button"
+          class="ui primary button save-button"
   >
     {{buttonText}}
   </button>

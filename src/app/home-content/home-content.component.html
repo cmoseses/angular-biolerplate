@@ -1,13 +1,16 @@
-<p>
-  home-content works!
-</p>
-<app-dropdown
-  [values]="dropDownValues | async"
-  (valueChange)="dropDownClick.next($event)"
-  [defaultText]="'Log Level'"
->
-</app-dropdown>
-<app-gird
-  [rows]="gridRows | async"
-  [columns]="gridColumns | async">
-</app-gird>
+<div class="home-content">
+  <div class="dropdown">
+    <app-dropdown
+      [values]="dropDownValues | async"
+      (valueChange)="dropDownClick.next($event)"
+      [defaultText]="'Log Level'"
+    >
+    </app-dropdown>
+  </div>
+  <div class="gird">
+    <app-gird
+      [rows]="gridRows | async"
+      [columns]="gridColumns | async">
+    </app-gird>
+  </div>
+</div>

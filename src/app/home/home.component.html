@@ -1,12 +1,8 @@
-<p>
-  home works!
-</p>
-<h1>Hi {{currentUser && currentUser.userid}}!</h1>
-<p><a [routerLink]="['/login']">Logout</a></p>
-
-<nav>
-  <a [routerLink]="['home-content']" routerLinkActive="active">Home</a>
-  <a [routerLink]="['dashboards']" routerLinkActive="active">Dashboards</a>
+<nav class="ui stackable container menu nav">
+  <a class="item" [routerLink]="['home-content']" routerLinkActive="active">Home</a>
+  <a class="item" [routerLink]="['dashboards']" routerLinkActive="active">Dashboards</a>
+  <a class="item right nav-user-id">Hi {{currentUser && currentUser.userid}}!</a>
+  <a class="item " [routerLink]="['/login']">Logout</a>
 </nav>
 
 <router-outlet></router-outlet>
