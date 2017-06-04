@@ -17,53 +17,44 @@ export class DashboardsComponent implements OnInit {
 
   ngOnInit() {
 
-    this.logService.getLogItems().do(console.log).subscribe();
-    this.pieOptions = {
-      chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-      },
-      title: {text: 'Logs Types'},
-      legend: {
-        verticalAlign: 'top',
-        padding: 30
-      },
-      tooltip: {
-        pointFormat: '{series.name}:<b>{point.y}/ <b>{point.percentage:.1f}%</b>'
-      },
-      plotOptions: {
-        pie: {
-          allowPointSelect: true,
-          cursor: 'pointer',
-          showInLegend: true
+    this.logService.getLogItems()
+      .map(result => result.reduce((a, e) => {
+        if (a.length === 0) {
+          a.push({name: 'count/percentage', colorByPoint: true, data: [{name: e.logLevel, y: 1}]});
+        } else if (a[0].data.find(k => k.name === e.logLevel)) {
+          a[0].data.find(k => k.name === e.logLevel).y++;
+        } else {
+          a[0].data.push({name: e.logLevel, y: 1});
         }
-      },
-      series: [{
-        name: 'count/percentage',
-        colorByPoint: true,
-        data: [{
-          name: 'Microsoft Internet Explorer',
-          y: 56.33
-        }, {
-          name: 'Chrome',
-          y: 24.03,
-        }, {
-          name: 'Firefox',
-          y: 10.38
-        }, {
-          name: 'Safari',
-          y: 4.77
-        }, {
-          name: 'Opera',
-          y: 0.91
-        }, {
-          name: 'Proprietary or Undetectable',
-          y: 0.2
-        }]
-      }]
-    };
+        return a;
+      }, []))
+      .do(console.log)
+      .do(series => this.pieOptions = {
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false,
+          type: 'pie'
+        },
+        title: {text: 'Logs Types'},
+        legend: {
+          verticalAlign: 'top',
+          padding: 30
+        },
+        tooltip: {
+          pointFormat: '{series.name}:<b>{point.y}/ <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            showInLegend: true
+          }
+        },
+        series
+      })
+      .subscribe();
+
     this.logService.getLogItems()
       .map(logItems => logItems.map(logItem => {
         logItem.timeStamp = this.mapTimeStampString(logItem.timeStamp);
