@@ -1,18 +1,24 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
+import {RouterTestingModule} from '@angular/router/testing';
 
 import {LoginComponent} from './login.component';
 import {DynamicFormModule} from '../dynamic-form/dynamic-form.module';
+import {AuthService} from '../services/auth.service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  const AuthServiceStub = {logout: () => true, login: () => {}};
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [LoginComponent],
-      imports: [DynamicFormModule]
+      imports: [DynamicFormModule, RouterTestingModule],
+      providers: [
+        {provide: AuthService, useValue: AuthServiceStub},
+      ]
     })
       .compileComponents();
   }));
@@ -23,7 +29,7 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

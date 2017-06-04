@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 
 import {LoginComponent} from './login.component';
 import {DynamicFormModule} from '../dynamic-form/dynamic-form.module';
-import {AuthService} from '../auth.service';
+import {AuthService} from '../services/auth.service';
 
 @NgModule({
   imports: [CommonModule, DynamicFormModule],

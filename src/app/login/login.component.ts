@@ -1,7 +1,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {Subscription} from 'rxjs/Subscription';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/do';
@@ -9,10 +9,10 @@ import 'rxjs/add/operator/retryWhen';
 
 import {Question} from '../dynamic-form/dynamic-form-question/question.model';
 import {TextboxQuestion} from '../dynamic-form/dynamic-form-question/question-textbox.model';
-import {AuthService} from '../auth.service';
+import {AuthService} from '../services/auth.service';
 
 interface UserLoginField {
-  username: string;
+  userid: string;
   password: string;
 }
 
@@ -29,17 +29,24 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription;
   private readonly retryTime = 1000;
+  private readonly returnUrl;
+  private readonly defaultUrl = '/home';
 
   constructor(private authService: AuthService,
-              private router: Router) {
+              private router: Router,
+              private activatedRoute: ActivatedRoute) {
+    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || this.defaultUrl;
   }
 
   ngOnInit() {
+    this.authService.logout();
     this.loginQuestions = this.getLoginQuestions();
+
     this.subscription = this.loginClick
       .mergeMap((userLoginField: UserLoginField) =>
-        this.authService.login(userLoginField.username, userLoginField.password)
+        this.authService.login(userLoginField.userid, userLoginField.password)
       )
+      .do(console.log)
       .retryWhen(error =>
         error
           .do(e => console.log(e.message, 'retry after 1 s'))
@@ -47,7 +54,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         () => {
-          this.router.navigate(['/home']);
+          this.router.navigate([this.defaultUrl]);
         }
       );
   }
@@ -59,7 +66,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   private getLoginQuestions(): Array<Question<any>> {
     return [
       new TextboxQuestion({
-        id: 'username',
+        id: 'userid',
         label: 'User ID',
         value: '',
         required: true
