@@ -6,6 +6,7 @@ import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/retryWhen';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 import {Question} from '../dynamic-form/dynamic-form-question/question.model';
 import {TextboxQuestion} from '../dynamic-form/dynamic-form-question/question-textbox.model';
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   loginQuestions: Array<Question<any>>;
   loginClick: Subject<any> = new Subject<any>();
+  showErrorInfo: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   private subscription: Subscription;
   private readonly retryTime = 1000;
@@ -50,10 +52,12 @@ export class LoginComponent implements OnInit, OnDestroy {
       .retryWhen(error =>
         error
           .do(e => console.log(e.message, 'retry after 1 s'))
+          .do(e => this.showErrorInfo.next(true))
           .delayWhen(val => Observable.timer(this.retryTime))
       )
       .subscribe(
         () => {
+          this.showErrorInfo.next(false);
           this.router.navigate([this.defaultUrl]);
         }
       );

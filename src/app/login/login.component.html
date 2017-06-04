@@ -6,5 +6,7 @@
   [questions]="loginQuestions"
   (formValue)="loginClick.next($event)"
 >
-
 </app-dynamic-form>
+<div class="ui left red basic label" *ngIf="showErrorInfo | async">
+  Your userid or password is wrong, try 123/xxxx
+</div>
