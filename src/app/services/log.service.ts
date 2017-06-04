@@ -32,7 +32,7 @@ export class LogService {
       );
   }
 
-  getDistinctLogLevel(): Observable<Array<string>> {
+  getDistinctLogLevels(): Observable<Array<string>> {
     return this.getLogItems()
       .map((logItems: Array<LogItem>) => logItems
         .map(logItem => logItem.logLevel)

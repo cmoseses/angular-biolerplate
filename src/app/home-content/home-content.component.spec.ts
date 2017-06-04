@@ -14,7 +14,7 @@ describe('HomeContentComponent', () => {
   const LogServiceStub = {
     getLogs: () => Observable.of([]),
     getLogItems: () => Observable.of([]),
-    getDistinctLogLevel: () => Observable.of([])
+    getDistinctLogLevels: () => Observable.of([])
   };
 
   beforeEach(async(() => {

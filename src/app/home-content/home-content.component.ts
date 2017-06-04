@@ -26,7 +26,7 @@ export class HomeContentComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.dropDownClick.do(console.log).subscribe();
-    this.dropDownValues = this.logService.getDistinctLogLevel()
+    this.dropDownValues = this.logService.getDistinctLogLevels()
       .map(logLevels => logLevels.map(logLevel =>
           new DropdownValue<string>(logLevel, logLevel)
         )
