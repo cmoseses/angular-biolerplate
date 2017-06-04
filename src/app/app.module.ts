@@ -3,6 +3,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule} from '@angular/http';
 
 import {ChartModule} from 'angular2-highcharts';
+import * as highcharts from 'highcharts';
+import {HighchartsStatic} from 'angular2-highcharts/dist/HighchartsService';
 
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -15,6 +17,14 @@ import {HomeContentModule} from './home-content/home-content.module';
 import {GirdModule} from './gird/gird.module';
 import {DropdownModule} from './dropdown/dropdown.module';
 
+export function highchartsFactory() {
+  const hc = require('highcharts');
+  const dd = require('highcharts/modules/drilldown');
+  dd(hc);
+
+  return hc;
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +32,7 @@ import {DropdownModule} from './dropdown/dropdown.module';
   imports: [
     BrowserModule,
     HttpModule,
-    ChartModule.forRoot(require('highcharts')),
+    ChartModule,
     LoginModule,
     HomeModule,
     DashboardsModule,
@@ -32,7 +42,12 @@ import {DropdownModule} from './dropdown/dropdown.module';
     HomeContentModule,
     AppRoutingModule
   ],
-  providers: [AuthGuardService],
+  providers: [
+    AuthGuardService, {
+      provide: HighchartsStatic,
+      useFactory: highchartsFactory
+    }
+  ],
   bootstrap: [AppComponent]
 })
 

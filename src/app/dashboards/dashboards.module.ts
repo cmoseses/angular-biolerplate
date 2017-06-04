@@ -9,5 +9,6 @@ import {ChartModule} from 'angular2-highcharts';
   declarations: [DashboardsComponent],
   exports: [DashboardsComponent]
 })
+
 export class DashboardsModule {
 }
