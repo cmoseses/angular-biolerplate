@@ -4,6 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home.component';
 import {HomeContentComponent} from '../home-content/home-content.component';
 import {DashboardsComponent} from '../dashboards/dashboards.component';
+import {AuthGuardService} from '../services/auth-guard.service';
 
 
 const homeRoutes: Routes = [
@@ -13,15 +14,18 @@ const homeRoutes: Routes = [
     children: [
       {
         path: '',
-        component: HomeContentComponent
+        component: HomeContentComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'home-content',
-        component: HomeContentComponent
+        component: HomeContentComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'dashboards',
-        component: DashboardsComponent
+        component: DashboardsComponent,
+        canActivate: [AuthGuardService]
       }
     ]
   }
