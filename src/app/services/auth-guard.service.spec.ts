@@ -11,7 +11,7 @@ describe('AuthGuardService', () => {
     });
   });
 
-  it('should ...', inject([AuthGuardService], (service: AuthGuardService) => {
-    expect(service).toBeTruthy();
+  it('should be defined', inject([AuthGuardService], (service: AuthGuardService) => {
+    expect(service).toBeDefined();
   }));
 });

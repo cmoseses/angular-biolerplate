@@ -10,7 +10,7 @@ describe('AuthService', () => {
     });
   });
 
-  it('should ...', inject([AuthService], (service: AuthService) => {
-    expect(service).toBeTruthy();
+  it('should be defined', inject([AuthService], (service: AuthService) => {
+    expect(service).toBeDefined();
   }));
 });
