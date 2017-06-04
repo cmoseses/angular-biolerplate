@@ -7,6 +7,7 @@ import {DynamicFormModule} from './dynamic-form/dynamic-form.module';
 import {HomeModule} from './home/home.module';
 import {APP_BASE_HREF} from '@angular/common';
 import {NotFoundModule} from './not-found/not-found.module';
+import {DashboardsModule} from './dashboards/dashboards.module';
 
 describe('AppComponent', () => {
   beforeEach(() => {
@@ -20,6 +21,7 @@ describe('AppComponent', () => {
         NotFoundModule,
         HomeModule,
         DynamicFormModule,
+        DashboardsModule,
         AppRoutingModule
       ],
       providers: [

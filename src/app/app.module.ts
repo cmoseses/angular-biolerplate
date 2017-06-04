@@ -8,6 +8,7 @@ import {LoginModule} from './login/login.module';
 import {HomeModule} from './home/home.module';
 import {NotFoundModule} from './not-found/not-found.module';
 import {AuthGuardService} from './services/auth-guard.service';
+import {DashboardsModule} from './dashboards/dashboards.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {AuthGuardService} from './services/auth-guard.service';
     BrowserModule,
     LoginModule,
     HomeModule,
+    DashboardsModule,
     NotFoundModule,
     HttpModule,
     AppRoutingModule
