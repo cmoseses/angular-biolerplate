@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import 'rxjs/add/observable/merge';
+import {Observable} from 'rxjs/Rx';
+import {Subscription} from 'rxjs/Subscription';
 import * as moment from 'moment';
+
 import {LogService} from '../services/log.service';
 import {LogItem} from '../models/logs.model';
 
@@ -12,13 +16,14 @@ export class DashboardsComponent implements OnInit {
 
   lineOptions: Object;
   pieOptions: Object;
+  private subscription: Subscription;
 
   constructor(private logService: LogService) {
   }
 
   ngOnInit() {
 
-    this.logService.getLogItems()
+    const pieChart = this.logService.getLogItems()
       .map(logItems => this.mapLogsToPieChartSeries(logItems))
       .do(series =>
         this.pieOptions = {
@@ -44,10 +49,9 @@ export class DashboardsComponent implements OnInit {
             }
           },
           series
-        })
-      .subscribe();
+        });
 
-    this.logService.getLogItems()
+    const lineChart = this.logService.getLogItems()
       .map(logItems => logItems.map(logItem => {
         logItem.timeStamp = this.mapTimeStampString(logItem.timeStamp);
         return logItem;
@@ -71,8 +75,11 @@ export class DashboardsComponent implements OnInit {
           }
         },
         series
-      })
-      .subscribe();
+      });
+
+
+    this.subscription = Observable.merge(pieChart, lineChart).subscribe();
+
   }
 
   private mapTimeStampString(timeStamp: string): number {
