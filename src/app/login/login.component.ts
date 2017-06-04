@@ -76,6 +76,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         id: 'password',
         label: 'Password',
         value: '',
+        type: 'password',
         required: true
       })
     ];
