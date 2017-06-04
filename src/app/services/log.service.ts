@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
+import 'rxjs/add/operator/publishReplay';
 
 import {Log, LogOption, LogItem} from '../models/logs.model';
 import {environment} from '../../environments/environment';
@@ -20,7 +21,7 @@ export class LogService {
         logOptions.map((logOption: LogOption) =>
           new Log(logOption)
         )
-      );
+      ).publishReplay(1).refCount();
   }
 
   getLogItems(): Observable<Array<LogItem>> {
