@@ -3,3 +3,10 @@
 </p>
 <h1>Hi {{currentUser && currentUser.userid}}!</h1>
 <p><a [routerLink]="['/login']">Logout</a></p>
+
+<nav>
+  <a [routerLink]="['home-content']" routerLinkActive="active">Home</a>
+  <a [routerLink]="['dashboards']" routerLinkActive="active">Dashboards</a>
+</nav>
+
+<router-outlet></router-outlet>
