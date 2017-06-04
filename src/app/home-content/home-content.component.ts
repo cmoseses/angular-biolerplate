@@ -1,11 +1,12 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/combineLatest';
 import {Observable} from 'rxjs/Rx';
-import {Subject} from 'rxjs/Subject';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 import {LogService} from '../services/log.service';
 import {Column} from '../gird/column.model';
-import {Log, LogItem} from '../models/logs.model';
+import {LogItem} from '../models/logs.model';
 import {DropdownValue} from '../dropdown/dropdown.model';
 
 @Component({
@@ -18,14 +19,21 @@ export class HomeContentComponent implements OnInit, OnDestroy {
   gridColumns: Observable<Array<Column>>;
   gridRows: Observable<Array<LogItem>>;
 
-  dropDownClick: Subject<string> = new Subject<string>();
+  dropDownClick: BehaviorSubject<string> = new BehaviorSubject<string>('');
   dropDownValues: Observable<Array<DropdownValue<string>>>;
 
   constructor(private logService: LogService) {
   }
 
   ngOnInit() {
-    this.dropDownClick.do(console.log).subscribe();
+    const gridRows = this.logService.getLogItems();
+
+    this.gridRows = this.dropDownClick
+      .combineLatest(gridRows)
+      .map(([logLevel, logItems]) =>
+        logItems.filter(logItem => logItem.logLevel.indexOf(logLevel) !== -1)
+      );
+
     this.dropDownValues = this.logService.getDistinctLogLevels()
       .map(logLevels => logLevels.map(logLevel =>
           new DropdownValue<string>(logLevel, logLevel)
@@ -33,7 +41,6 @@ export class HomeContentComponent implements OnInit, OnDestroy {
       );
 
     this.gridColumns = this.getColumns();
-    this.gridRows = this.logService.getLogItems();
   }
 
   ngOnDestroy() {
