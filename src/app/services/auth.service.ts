@@ -16,7 +16,7 @@ export class AuthService {
   }
 
   login(userid: string, password: string): Observable<User> {
-    return this.http.get('./assets/users.json')
+    return this.http.get(environment.usersMetaDataUrl)
       .map(response =>
         response.json()
       )

@@ -5,5 +5,7 @@
 
 export const environment = {
   production: false,
-  currentUserStorageKey: 'currentUser'
+  currentUserStorageKey: 'currentUser',
+  usersMetaDataUrl: './assets/users.json',
+  logsMetaDataUrl: './assets/logs.json'
 };

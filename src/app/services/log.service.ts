@@ -3,6 +3,7 @@ import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 
 import {Log, LogOption} from '../models/logs.model';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class LogService {
@@ -11,7 +12,7 @@ export class LogService {
   }
 
   getLogs(): Observable<Array<Log>> {
-    return this.http.get('./assets/logs.json')
+    return this.http.get(environment.logsMetaDataUrl)
       .map(response =>
         response.json()
       )
