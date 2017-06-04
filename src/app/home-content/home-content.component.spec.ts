@@ -6,6 +6,7 @@ import {Observable} from 'rxjs/Rx';
 import {HomeContentComponent} from './home-content.component';
 import {LogService} from '../services/log.service';
 import {GirdModule} from '../gird/gird.module';
+import {DropdownModule} from '../dropdown/dropdown.module';
 
 describe('HomeContentComponent', () => {
   let component: HomeContentComponent;
@@ -18,7 +19,7 @@ describe('HomeContentComponent', () => {
       providers: [
         {provide: LogService, useValue: LogServiceStub},
       ],
-      imports: [GirdModule]
+      imports: [GirdModule, DropdownModule]
     })
       .compileComponents();
   }));

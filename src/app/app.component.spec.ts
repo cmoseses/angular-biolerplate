@@ -1,15 +1,17 @@
 import {TestBed, async} from '@angular/core/testing';
+import {RouterTestingModule} from '@angular/router/testing';
+import {APP_BASE_HREF} from '@angular/common';
+
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
-import {LoginModule} from './login/login.module';
-import {RouterTestingModule} from '@angular/router/testing';
-import {DynamicFormModule} from './dynamic-form/dynamic-form.module';
 import {HomeModule} from './home/home.module';
-import {APP_BASE_HREF} from '@angular/common';
+import {LoginModule} from './login/login.module';
+import {DynamicFormModule} from './dynamic-form/dynamic-form.module';
 import {NotFoundModule} from './not-found/not-found.module';
 import {DashboardsModule} from './dashboards/dashboards.module';
 import {HomeContentModule} from './home-content/home-content.module';
 import {GirdModule} from './gird/gird.module';
+import {DropdownModule} from './dropdown/dropdown.module';
 
 describe('AppComponent', () => {
   beforeEach(() => {
@@ -22,6 +24,7 @@ describe('AppComponent', () => {
         LoginModule,
         NotFoundModule,
         GirdModule,
+        DropdownModule,
         HomeContentModule,
         HomeModule,
         DynamicFormModule,

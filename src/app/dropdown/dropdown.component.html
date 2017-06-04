@@ -1,0 +1,6 @@
+<select #result class="ui selection dropdown" (change)="select(result.value)">
+  <option selected="selected" value="">{{defaultText}}</option>
+  <option *ngFor="let value of values">
+    <span>{{value.label}}</span>
+  </option>
+</select>

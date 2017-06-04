@@ -1,7 +1,12 @@
 <p>
   home-content works!
 </p>
-
+<app-dropdown
+  [values]="dropDownValues | async"
+  (valueChange)="dropDownClick.next($event)"
+  [defaultText]="'Log Level'"
+>
+</app-dropdown>
 <app-gird
   [rows]="gridRows | async"
   [columns]="gridColumns | async">

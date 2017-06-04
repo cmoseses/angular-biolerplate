@@ -11,10 +11,11 @@ import {AuthGuardService} from './services/auth-guard.service';
 import {DashboardsModule} from './dashboards/dashboards.module';
 import {HomeContentModule} from './home-content/home-content.module';
 import {GirdModule} from './gird/gird.module';
+import {DropdownModule} from './dropdown/dropdown.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,6 +23,7 @@ import {GirdModule} from './gird/gird.module';
     HomeModule,
     DashboardsModule,
     GirdModule,
+    DropdownModule,
     NotFoundModule,
     HomeContentModule,
     HttpModule,
