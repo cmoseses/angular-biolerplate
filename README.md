@@ -1,10 +1,14 @@
 # Homework
 
+key words: dynamic form, gird, rxjs, hicharts, dropdown
+
 ## Setup steps
 - install *NodeJs* `v6.10.3`
 - `cd` to the root of this project
 - `npm install`
 - `ng serve` then visit `http://localhost:4200/`
+- logs.json and users.json are in app/assets/
+
 
 ## Support by Angular-CLI
 
