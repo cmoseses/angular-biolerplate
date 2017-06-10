@@ -1,7 +1,5 @@
 # Homework
 
-key words: dynamic form, gird, rxjs, hicharts, dropdown
-
 ## Setup steps
 - install *NodeJs* `v6.10.3`
 - `cd` to the root of this project
