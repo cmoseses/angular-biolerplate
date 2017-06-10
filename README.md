@@ -1,6 +1,7 @@
 # Homework
 
 ## Setup steps
+
 - install *NodeJs* `v6.10.3`
 - `cd` to the root of this project
 - `npm install`
